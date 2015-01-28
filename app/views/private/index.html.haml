@@ -1,0 +1,20 @@
+%h1 Overview
+%h2 Number of Events
+= @events.count
+
+%h2 Last 20 Events
+%table.table
+  %thead
+    %tr
+      %th App. UID
+      %th Type
+      %th Model Name
+      %th Controller Name
+      %th Action Name
+      %th Action UID
+      %th DateTime
+      %th Data
+      %th Session Data
+
+  %tbody
+    = render @events
