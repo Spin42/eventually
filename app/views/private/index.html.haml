@@ -2,6 +2,28 @@
 %h2 Number of Events
 = @events.count
 
+%h2 Reports
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Count
+      %th Generate
+      %th View
+  %tbody
+    %tr
+      %td New Relic Application Report
+      %td= @new_relic_application_report_count
+      %td= link_to "Generate", api_new_relic_application_reports_path, :remote => true, :method => :post
+      %td= link_to "View", api_new_relic_application_reports_path, :target => "_blank"
+
+    %tr
+      %td New Relic Server Report
+      %td= @new_relic_server_report_count
+      %td= link_to "Generate", api_new_relic_server_reports_path, :remote => true, :method => :post
+      %td= link_to "View", api_new_relic_server_reports_path, :target => "_blank"
+
 %h2 Last 20 Events
 %table.table
   %thead
@@ -18,3 +40,5 @@
 
   %tbody
     = render @events
+
+
