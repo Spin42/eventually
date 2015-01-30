@@ -12,10 +12,10 @@ class TwitterService
   end
 
   def self.client
-    @twitter_service = TwitterService.new
+    @twitter_service ||= TwitterService.new
   end
 
-  def self.user(user_id_or_screen_name)
+  def user(user_id_or_screen_name)
     @twitter.user(user_id_or_screen_name)
   end
 end

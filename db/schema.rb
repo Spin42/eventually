@@ -75,10 +75,9 @@ ActiveRecord::Schema.define(version: 20150130092046) do
     t.integer  "followers_count"
     t.integer  "friends_count"
     t.integer  "statuses_count"
-    t.integer  "retweet_count"
-    t.integer  "favorite_count"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "favourites_count"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_index "twitter_reports", ["screen_name"], name: "index_twitter_reports_on_screen_name", using: :btree

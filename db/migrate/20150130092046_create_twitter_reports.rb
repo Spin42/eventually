@@ -7,8 +7,7 @@ class CreateTwitterReports < ActiveRecord::Migration
       t.integer :followers_count
       t.integer :friends_count
       t.integer :statuses_count
-      t.integer :retweet_count
-      t.integer :favorite_count
+      t.integer :favourites_count
 
       t.timestamps null: false
     end
