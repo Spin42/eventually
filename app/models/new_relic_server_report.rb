@@ -24,14 +24,12 @@ class NewRelicServerReport < ActiveRecord::Base
 
   def self.compute_for_all_servers!
     new_relic_servers_data = NewRelicService.client.servers
-    puts new_relic_servers_data.inspect
     new_relic_servers_data.each do |server_data|
       self.compute_for_server!(server_data)
     end
   end
 
   def self.compute_for_server!(server_data)
-    puts server_data.inspect
     attributes                                = { new_relic_id: server_data["id"],
                                                   last_reported_at: server_data["last_reported_at"] }
     new_relic_server_report                   = NewRelicServerReport.find_or_initialize_by attributes

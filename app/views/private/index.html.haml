@@ -24,6 +24,12 @@
       %td= link_to "Generate", api_new_relic_server_reports_path, :remote => true, :method => :post
       %td= link_to "View", api_new_relic_server_reports_path, :target => "_blank"
 
+    %tr
+      %td Twitter Report
+      %td= @twitter_report_count
+      %td= link_to "Generate", api_twitter_reports_path, :remote => true, :method => :post
+      %td= link_to "View", api_twitter_reports_path, :target => "_blank"
+
 %h2 Last 20 Events
 %table.table
   %thead

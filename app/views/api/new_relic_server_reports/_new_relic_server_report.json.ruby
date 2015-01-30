@@ -1,5 +1,6 @@
 {
   name:             new_relic_server_report.name,
+  newRelicId:       new_relic_server_report.new_relic_id,
   healthy:          new_relic_server_report.healthy,
   cpu:              new_relic_server_report.cpu,
   cpuStolen:        new_relic_server_report.cpu_stolen,

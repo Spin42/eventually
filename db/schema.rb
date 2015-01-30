@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128171914) do
+ActiveRecord::Schema.define(version: 20150130092046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,5 +67,21 @@ ActiveRecord::Schema.define(version: 20150128171914) do
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end
+
+  create_table "twitter_reports", force: :cascade do |t|
+    t.string   "twitter_id"
+    t.string   "screen_name"
+    t.string   "name"
+    t.integer  "followers_count"
+    t.integer  "friends_count"
+    t.integer  "statuses_count"
+    t.integer  "retweet_count"
+    t.integer  "favorite_count"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "twitter_reports", ["screen_name"], name: "index_twitter_reports_on_screen_name", using: :btree
+  add_index "twitter_reports", ["twitter_id"], name: "index_twitter_reports_on_twitter_id", using: :btree
 
 end
