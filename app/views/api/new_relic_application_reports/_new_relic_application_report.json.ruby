@@ -1,6 +1,6 @@
 {
   name:             new_relic_application_report.name,
-  newRelicId:       new_relic_server_report.new_relic_id,
+  newRelicId:       new_relic_application_report.new_relic_id,
   healthy:          new_relic_application_report.healthy,
   responseTime:     new_relic_application_report.response_time,
   throughput:       new_relic_application_report.throughput,

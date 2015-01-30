@@ -1,6 +1,6 @@
 class Api::NewRelicApplicationReportsController < ApiController
   def index
-    @new_relic_application_reports = NewRelicApplicationReport.select("DISTINCT(new_relic_id), *").order("created_at DESC")
+    @new_relic_application_reports = NewRelicApplicationReport.select("DISTINCT ON (new_relic_id) *").order("new_relic_id, created_at DESC")
   end
 
   def create
