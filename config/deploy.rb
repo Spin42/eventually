@@ -8,7 +8,7 @@ set :deploy_to,         "/home/spin42-reporting"
 set :rvm_type, :user
 set :rvm_ruby_version,  "ruby-2.2.0@spin42-reporting"
 set :linked_files,      %w{ config/database.yml config/secrets.yml }
-set :linked_dirs,       %w{ bin log tmp/pids }
+set :linked_dirs,       %w{ bin log tmp/pids config/credentials }
 set :keep_releases, 5
 
 namespace :deploy do
