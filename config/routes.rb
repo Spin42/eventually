@@ -1,5 +1,9 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   root "private#index"
+
+  mount Sidekiq::Web => "/sidekiq"
 
   namespace :api, defaults: { format: :json } do
     resources :events, only: :create

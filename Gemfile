@@ -14,7 +14,8 @@ gem "google-api-client"
 gem "pg", "~> 0.17.1"
 gem "newrelic_rpm"
 gem "twitter"
-gem "whenever", :require => false
+gem "whenever", :require => nil
+gem "sinatra", :require => nil
 
 group :development, :test do
   gem "byebug"
