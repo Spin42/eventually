@@ -30,19 +30,20 @@
       %td= link_to "Generate", api_twitter_reports_path, :remote => true, :method => :post
       %td= link_to "View", api_twitter_reports_path, :target => "_blank"
 
+    %tr
+      %td Google Analytics Report
+      %td= @google_analytics_report_count
+      %td= link_to "Generate", api_google_analytics_reports_path, :remote => true, :method => :post
+      %td= link_to "View", api_google_analytics_reports_path, :target => "_blank"
+
 %h2 Last 20 Events
 %table.table
   %thead
     %tr
-      %th App. UID
-      %th Type
-      %th Model Name
-      %th Controller Name
-      %th Action Name
-      %th Action UID
-      %th DateTime
+      %th Source Name
+      %th Name
       %th Data
-      %th Session Data
+      %th Created At
 
   %tbody
     = render @events

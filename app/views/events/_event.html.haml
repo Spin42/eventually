@@ -1,19 +1,5 @@
 %tr
-  %td
-    event.application_uid
-  %td
-    event.type
-  %td
-    event.model_name
-  %td
-    event.controller_name
-  %td
-    event.action_name
-  %td
-    event.action_uid
-  %td
-    event.date_time
-  %td
-    event.data
-  %td
-    event.session_data
+  %td= event.source_name
+  %td= event.name
+  %td= event.data
+  %td= event.created_at

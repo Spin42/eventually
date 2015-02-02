@@ -6,5 +6,6 @@ class PrivateController < ApplicationController
     @new_relic_server_report_count      = NewRelicServerReport.count
     @new_relic_application_report_count = NewRelicApplicationReport.count
     @twitter_report_count               = TwitterReport.count
+    @google_analytics_report_count      = GoogleAnalyticsReport.count
   end
 end

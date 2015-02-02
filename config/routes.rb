@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :new_relic_server_reports, only: [ :index, :create ]
     resources :new_relic_application_reports, only: [ :index, :create ]
     resources :twitter_reports, only: [ :index, :create ]
+    resources :google_analytics_reports, only: [ :index, :create ]
   end
 
 end

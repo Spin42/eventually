@@ -23,16 +23,17 @@
 class NewRelicServerReport < ActiveRecord::Base
 
   def self.compute_for_all_servers!
-    new_relic_servers_data = NewRelicService.client.servers
+    new_relic_servers_data = Event.where("name = ?", "new relic servers")
+                              .order(created_at: :desc).first.data
     new_relic_servers_data.each do |server_data|
       self.compute_for_server!(server_data)
     end
   end
 
   def self.compute_for_server!(server_data)
-    attributes                                = { new_relic_id: server_data["id"],
-                                                  last_reported_at: server_data["last_reported_at"] }
-    new_relic_server_report                   = NewRelicServerReport.find_or_initialize_by attributes
+    new_relic_server_report                   = NewRelicServerReport.new
+    new_relic_server_report.new_relic_id      = server_data["id"]
+    new_relic_server_report.last_reported_at  = server_data["last_reported_at"]
     new_relic_server_report.name              = server_data["name"]
     new_relic_server_report.health_status     = server_data["health_status"]
     new_relic_server_report.reporting         = server_data["reporting"]
