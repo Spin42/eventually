@@ -14,6 +14,7 @@ gem "google-api-client"
 gem "pg", "~> 0.17.1"
 gem "newrelic_rpm"
 gem "twitter"
+gem "whenever", :require => false
 
 group :development, :test do
   gem "byebug"
