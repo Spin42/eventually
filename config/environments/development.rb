@@ -38,4 +38,23 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.projectors = {
+    twitter: {
+      event_bus_queue:  "twitter_event_bus_queue",
+      class_name:       "twitter_projector"
+    },
+    google_analytics: {
+      event_bus_queue:  "google_analytics_event_bus_queue",
+      class_name:       "google_analytics_projector"
+    },
+    new_relic_application: {
+      event_bus_queue:  "new_relic_application_event_bus_queue",
+      class_name:       "new_relic_application_projector"
+    },
+    new_relic_server: {
+      event_bus_queue:  "new_relic_server_event_bus_queue",
+      class_name:       "new_relic_server_projector"
+    }
+  }
 end

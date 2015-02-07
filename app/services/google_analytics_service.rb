@@ -21,7 +21,6 @@ class GoogleAnalyticsService
   def self.client
     @google_analytics_service ||= GoogleAnalyticsService.new
   end
-# google_analytics_report.call_google_analytics_api(beginning_of_week, end_of_week, "ga:channelGrouping", "ga:visits")
 
   def page_visits(google_analytics_id, start_date_time, end_date_time, dimensions, metrics)
     analytics = @google_api_client.discovered_api("analytics", "v3")

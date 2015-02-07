@@ -1,16 +1,18 @@
 class EventFactory
 
-  def self.create_from_api(params)
-    event                 = Event.new
-    event.application_uid = params[:event][:application_uid]
-    event.type            = "#{params[:event][:type]}_event".camelize
-    event.model_name      = params[:event][:model_name]
-    event.controller_name = params[:event][:controller_name]
-    event.action_name     = params[:event][:action_name]
-    event.action_uid      = params[:event][:action_uid] unless params[:event][:action_uid].blank?
-    event.date_time       = params[:event][:date_time]
-    event.data            = params[:event][:data].to_json unless params[:event][:data].blank?
-    event.session_data    = params[:event][:session_data].to_json unless params[:event][:session_data].blank?
+  def self.build_from_projector(params)
+    build(params)
+  end
+
+  def self.build_from_event_bus(params)
+    build(params)
+  end
+
+  def self.build(params)
+    event             = Event.new
+    event.source_name = params["source_name"]
+    event.name        = params["name"]
+    event.data        = params["data"]
     event
   end
 end

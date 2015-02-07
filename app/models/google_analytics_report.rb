@@ -23,30 +23,7 @@
 
 class GoogleAnalyticsReport < ActiveRecord::Base
 
-  def self.compute_for_all_views!
-    Event::GOOGLE_ANALYTICS_VIEW_IDS.each do |google_analytics_view_id|
-      self.compute_for_view!(google_analytics_view_id)
-    end
-  end
-
-  def self.compute_for_view!(google_analytics_view_id)
-    google_analytics_report                           = GoogleAnalyticsReport.new
-    google_analytics_report.google_analytics_view_id  = google_analytics_view_id
-    # check dimensions too in requests
-    google_analytics_report.compute_visits_by_channels
-    google_analytics_report.compute_users_by_types
-    google_analytics_report.compute_site_speeds
-    google_analytics_report.save!
-  end
-
-  def compute_visits_by_channels
-    dimensions                  = "ga:channelGrouping"
-    metrics                     = "ga:visits"
-    event                       = Event.where("name = ?", "google analytics visits by channels")
-                                  .where("data->'query'->>'ids' = ?", google_analytics_view_id)
-                                  .where("data->'query'->>'dimensions' = ?", dimensions)
-                                  .order(created_at: :desc).first
-    visits_by_channels          = event.data
+  def update_visits_by_channels(visits_by_channels)
     self.total_visits           = visits_by_channels["totalsForAllResults"]["ga:visits"].try(:to_i)
     self.direct_visits          = extract_value(visits_by_channels["rows"], "Direct").try(:to_i)
     self.organic_search_visits  = extract_value(visits_by_channels["rows"], "Organic Search").try(:to_i)
@@ -54,27 +31,13 @@ class GoogleAnalyticsReport < ActiveRecord::Base
     self.social_visits          = extract_value(visits_by_channels["rows"], "Social").try(:to_i)
   end
 
-  def compute_users_by_types
-    dimensions                  = "ga:userType"
-    metrics                     = "ga:users"
-    event                       = Event.where("name = ?", "google analytics users by types")
-                                    .where("data->'query'->>'ids' = ?", google_analytics_view_id)
-                                    .where("data->'query'->>'dimensions' = ?", dimensions)
-                                    .order(created_at: :desc).first
-    users_by_types      = event.data
-    self.total_users    = users_by_types["totalsForAllResults"]["ga:users"].try(:to_i)
-    self.new_users      = extract_value(users_by_types["rows"], "New Visitor").try(:to_i)
-    self.returning_users= extract_value(users_by_types["rows"], "Returning Visitor").try(:to_i)
+  def update_users_by_types(users_by_types)
+    self.total_users      = users_by_types["totalsForAllResults"]["ga:users"].try(:to_i)
+    self.new_users        = extract_value(users_by_types["rows"], "New Visitor").try(:to_i)
+    self.returning_users  = extract_value(users_by_types["rows"], "Returning Visitor").try(:to_i)
   end
 
-  def compute_site_speeds
-    dimensions                        = ""
-    metrics                           = "ga:avgServerResponseTime, ga:avgPageDownloadTime, ga:avgPageLoadTime"
-    event                             = Event.where("name = ?", "google analytics site speeds")
-                                          .where("data->'query'->>'ids' = ?", google_analytics_view_id)
-                                          .where("data->'query'->>'dimensions' = ?", dimensions)
-                                          .order(created_at: :desc).first
-    site_speeds                       = event.data
+  def update_site_speeds(site_speeds)
     self.average_server_response_time = site_speeds["totalsForAllResults"]["ga:avgServerResponseTime"]
     self.average_page_download_time   = site_speeds["totalsForAllResults"]["ga:avgPageDownloadTime"]
     self.average_page_load_time       = site_speeds["totalsForAllResults"]["ga:avgPageLoadTime"]

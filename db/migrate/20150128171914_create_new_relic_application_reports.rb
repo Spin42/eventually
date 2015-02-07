@@ -2,7 +2,7 @@ class CreateNewRelicApplicationReports < ActiveRecord::Migration
   def change
     create_table :new_relic_application_reports do |t|
       t.string :name
-      t.string :new_relic_id
+      t.string :new_relic_id, index: true
       t.string :health_status
       t.string :reporting
       t.datetime :last_reported_at

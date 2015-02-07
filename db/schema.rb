@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20150130155628) do
     t.datetime "updated_at",                                            null: false
   end
 
+  add_index "google_analytics_reports", ["google_analytics_view_id"], name: "index_google_analytics_reports_on_google_analytics_view_id", using: :btree
+
   create_table "new_relic_application_reports", force: :cascade do |t|
     t.string   "name"
     t.string   "new_relic_id"
@@ -60,6 +62,8 @@ ActiveRecord::Schema.define(version: 20150130155628) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  add_index "new_relic_application_reports", ["new_relic_id"], name: "index_new_relic_application_reports_on_new_relic_id", using: :btree
 
   create_table "new_relic_server_reports", force: :cascade do |t|
     t.string   "name"
@@ -79,6 +83,8 @@ ActiveRecord::Schema.define(version: 20150130155628) do
     t.datetime "updated_at",                                 null: false
   end
 
+  add_index "new_relic_server_reports", ["new_relic_id"], name: "index_new_relic_server_reports_on_new_relic_id", using: :btree
+
   create_table "twitter_reports", force: :cascade do |t|
     t.string   "twitter_id"
     t.string   "screen_name"
@@ -91,7 +97,6 @@ ActiveRecord::Schema.define(version: 20150130155628) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "twitter_reports", ["screen_name"], name: "index_twitter_reports_on_screen_name", using: :btree
   add_index "twitter_reports", ["twitter_id"], name: "index_twitter_reports_on_twitter_id", using: :btree
 
 end

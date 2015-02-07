@@ -5,7 +5,7 @@ class Api::GoogleAnalyticsReportsController < ApiController
   end
 
   def create
-    GoogleAnalyticsReportWorker.perform_async
+    GoogleAnalyticsDataWorker.perform_async
     render nothing: true, status: :created
   end
 

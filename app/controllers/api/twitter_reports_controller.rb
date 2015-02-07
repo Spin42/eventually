@@ -4,7 +4,7 @@ class Api::TwitterReportsController < ApiController
   end
 
   def create
-    TwitterReportWorker.perform_async
+    TwitterDataWorker.perform_async
     render nothing: true, status: :created
   end
 

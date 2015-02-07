@@ -1,4 +1,5 @@
 require "uri"
+require "rest-client"
 
 class NewRelicService
 

@@ -1,0 +1,12 @@
+class NewRelicApplicationDataWorker < DataWorker
+
+  def fetch_data
+    new_relic_applications_data = NewRelicService.client.applications
+    event_hash                  = {
+      "source_name" => "spin42-reporting",
+      "name"        => "new relic applications data",
+      "data"        => new_relic_applications_data
+    }
+    [event_hash]
+  end
+end

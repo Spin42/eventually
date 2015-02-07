@@ -1,3 +1,4 @@
+require "twitter"
 require "uri"
 
 class TwitterService

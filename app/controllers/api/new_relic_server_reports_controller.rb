@@ -4,7 +4,7 @@ class Api::NewRelicServerReportsController < ApiController
   end
 
   def create
-    NewRelicServerReportWorker.perform_async
+    NewRelicServerDataWorker.perform_async
     render nothing: true, status: :created
   end
 

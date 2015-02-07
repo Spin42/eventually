@@ -1,7 +1,7 @@
 class CreateGoogleAnalyticsReports < ActiveRecord::Migration
   def change
     create_table :google_analytics_reports do |t|
-      t.string :google_analytics_view_id
+      t.string :google_analytics_view_id, index: true
       t.integer :total_visits
       t.integer :direct_visits
       t.integer :organic_search_visits
