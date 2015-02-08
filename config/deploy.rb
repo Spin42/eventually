@@ -53,7 +53,14 @@ namespace :deploy do
     end
   end
 
-  after :publishing,  :restart
-  after :restart,     :restart_projectors
+  task :update_supervisor_config do
+    on roles(:app) do
+      execute "supervisorctl reread"
+      execute "supervisorctl update"
+    end
+  end
 
+  before  "deploy:restart", "deploy:update_supervisor_config"
+  after   "publishing",     "restart"
+  after   "restart",        "restart_projectors"
 end
