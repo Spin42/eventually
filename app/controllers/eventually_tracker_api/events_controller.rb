@@ -1,9 +1,10 @@
 class EventuallyTrackerApi::EventsController < EventuallyTrackerApiController
 
   def create
-    event_hash = {
+    action_source = params["event"]["controller_name"] || params["event"]["model_name"]
+    event_hash    = {
       "source_name" => params["event"]["application_name"],
-      "name"        => "#{params['event']['controller_name']} #{params['event']['action_name']}",
+      "name"        => "#{action_source} #{params['event']['action_name']}",
       "data"        => params["event"],
       "created_at"  => params["event"]["date_time"]
     }
