@@ -11,7 +11,7 @@ set :linked_files,        %w{ config/database.yml config/secrets.yml }
 set :linked_dirs,         %w{ bin log tmp/pids config/credentials }
 set :keep_releases,       5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :whenever_command,    -> { "RAILS_ENV=#{fetch(:stage)}" }
+set :whenever_environment,-> { fetch(:stage) }
 
 namespace :deploy do
 
