@@ -17,4 +17,21 @@ namespace :projectors do
     end
     Process.wait
   end
+
+  task :twitter => :environment do
+    TwitterProjector.new.start
+  end
+
+  task :google_analytics => :environment do
+    GoogleAnalyticsProjector.new.start
+  end
+
+  task :new_relic_application => :environment do
+    NewRelicApplicationProjector.new.start
+  end
+
+  task :new_relic_server => :environment do
+    NewRelicServerProjector.new.start
+  end
 end
+
