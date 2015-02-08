@@ -57,4 +57,6 @@ Rails.application.configure do
       class_name:       "new_relic_server_projector"
     }
   }
+
+  config.redis_url = "redis://localhost:6379/1"
 end

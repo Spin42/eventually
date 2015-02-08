@@ -4,7 +4,7 @@ require "json"
 class EventBus
 
   def initialize
-    @redis  = Redis.new
+    @redis  = Redis.new(:url => Rails.application.config.redis_url)
     @queues = {}
     Rails.application.config.projectors.map do | projector_name, projector_attributes |
       @queues[projector_attributes[:class_name]] = projector_attributes[:event_bus_queue]
