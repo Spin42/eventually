@@ -22,9 +22,21 @@ namespace :deploy do
     end
   end
 
+  task :restart_projectors do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "supervisorctl restart spin42-reporting-projectors"
+    end
+  end
+
   task :start do
     on roles(:app) do
       execute "cd #{release_path} && ~/.rvm/bin/rvm #{fetch(:rvm_ruby_version)} do bundle exec unicorn -c #{current_path}/config/unicorn/#{fetch(:stage)}.rb -E #{fetch(:stage)} -D"
+    end
+  end
+
+  task :start_projectors do
+    on roles(:app) do
+      execute "supervisorctl start spin42-reporting-projectors"
     end
   end
 
@@ -34,6 +46,13 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  task :start_projectors do
+    on roles(:app) do
+      execute "supervisorctl stop spin42-reporting-projectors"
+    end
+  end
+
+  after :publishing,  :restart
+  after :restart,     :restart_projectors
 
 end
