@@ -25,7 +25,7 @@ namespace :deploy do
 
   task :restart_projectors do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "supervisorctl restart spin42-reporting-projectors"
+      execute "supervisorctl restart spin42-reporting-projectors:*"
     end
   end
 
@@ -37,7 +37,7 @@ namespace :deploy do
 
   task :start_projectors do
     on roles(:app) do
-      execute "supervisorctl start spin42-reporting-projectors"
+      execute "supervisorctl start spin42-reporting-projectors:*"
     end
   end
 
@@ -49,7 +49,7 @@ namespace :deploy do
 
   task :start_projectors do
     on roles(:app) do
-      execute "supervisorctl stop spin42-reporting-projectors"
+      execute "supervisorctl stop spin42-reporting-projectors:*"
     end
   end
 
