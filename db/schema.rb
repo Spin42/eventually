@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130155628) do
+ActiveRecord::Schema.define(version: 20150207161451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,16 +85,31 @@ ActiveRecord::Schema.define(version: 20150130155628) do
 
   add_index "new_relic_server_reports", ["new_relic_id"], name: "index_new_relic_server_reports_on_new_relic_id", using: :btree
 
+  create_table "twitter_daily_reports", force: :cascade do |t|
+    t.string   "twitter_id"
+    t.string   "screen_name"
+    t.string   "name"
+    t.integer  "followers",   default: 0
+    t.integer  "friends",     default: 0
+    t.integer  "statuses",    default: 0
+    t.integer  "favourites",  default: 0
+    t.integer  "values",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "twitter_daily_reports", ["twitter_id"], name: "index_twitter_daily_reports_on_twitter_id", using: :btree
+
   create_table "twitter_reports", force: :cascade do |t|
     t.string   "twitter_id"
     t.string   "screen_name"
     t.string   "name"
-    t.integer  "followers_count"
-    t.integer  "friends_count"
-    t.integer  "statuses_count"
-    t.integer  "favourites_count"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "followers",   default: 0
+    t.integer  "friends",     default: 0
+    t.integer  "statuses",    default: 0
+    t.integer  "favourites",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "twitter_reports", ["twitter_id"], name: "index_twitter_reports_on_twitter_id", using: :btree

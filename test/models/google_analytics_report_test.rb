@@ -4,8 +4,6 @@
 #
 #  id                           :integer          not null, primary key
 #  google_analytics_view_id     :string
-#  start_date_time              :datetime
-#  end_date_time                :datetime
 #  total_visits                 :integer
 #  direct_visits                :integer
 #  organic_search_visits        :integer

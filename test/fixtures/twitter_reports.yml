@@ -2,16 +2,16 @@
 #
 # Table name: twitter_reports
 #
-#  id               :integer          not null, primary key
-#  twitter_id       :string
-#  screen_name      :string
-#  name             :string
-#  followers_count  :integer
-#  friends_count    :integer
-#  statuses_count   :integer
-#  favourites_count :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
+#  id          :integer          not null, primary key
+#  twitter_id  :string
+#  screen_name :string
+#  name        :string
+#  followers   :integer
+#  friends     :integer
+#  statuses    :integer
+#  favourites  :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

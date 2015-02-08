@@ -5,7 +5,8 @@ class NewRelicApplicationDataWorker < DataWorker
     event_hash                  = {
       "source_name" => "spin42-reporting",
       "name"        => "new relic applications data",
-      "data"        => new_relic_applications_data
+      "data"        => new_relic_applications_data,
+      "created_at"  => Time.now.utc
     }
     [event_hash]
   end

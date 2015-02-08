@@ -4,12 +4,11 @@ class CreateTwitterDailyReports < ActiveRecord::Migration
       t.string :twitter_id, index: true
       t.string :screen_name
       t.string :name
-      t.integer :followers_count
-      t.integer :friends_count
-      t.integer :statuses_count
-      t.integer :favourites_count
-
-      t.integer :value_count
+      t.integer :followers, default: 0
+      t.integer :friends, default: 0
+      t.integer :statuses, default: 0
+      t.integer :favourites, default: 0
+      t.integer :values, default: 0
 
       t.timestamps null: false
     end

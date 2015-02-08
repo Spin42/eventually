@@ -24,6 +24,7 @@ group :development, :test do
   gem "capistrano-rails",   "~> 1.1"
   gem "capistrano-bundler"
   gem "capistrano-sidekiq"
+  gem "awesome_print"
 end
 
 group :production do

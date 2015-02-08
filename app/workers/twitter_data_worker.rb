@@ -9,7 +9,8 @@ class TwitterDataWorker < DataWorker
       event_hash = {
         "source_name" => "spin42-reporting",
         "name"        => "twitter user data",
-        "data"        => user_data.attrs
+        "data"        => user_data.attrs,
+        "created_at"  => Time.now.utc
       }
       event_hashes.push(event_hash)
     end

@@ -13,4 +13,7 @@ Rails.application.routes.draw do
     resources :google_analytics_reports, only: [ :index, :create ]
   end
 
+  namespace :eventually_tracker_api, defaults: { format: :json } do
+    resources :events, only: :create
+  end
 end

@@ -23,31 +23,34 @@ class GoogleAnalyticsDataWorker < DataWorker
     {
       "source_name" => "spin42-reporting",
       "name"        => "google analytics visits by channels",
-      "data"        => visits_by_channels.to_json
+      "data"        => visits_by_channels.to_json,
+      "created_at"  => Time.now.utc
     }
   end
 
   def fetch_users_by_types_data(google_analytics_view_id, start_date_time, end_date_time)
-    users_by_types      = GoogleAnalyticsService.client.page_visits(
-                            google_analytics_view_id,
-                            start_date_time, end_date_time,
-                            "ga:userType", "ga:users")
+    users_by_types  = GoogleAnalyticsService.client.page_visits(
+                        google_analytics_view_id,
+                        start_date_time, end_date_time,
+                        "ga:userType", "ga:users")
     {
       "source_name" => "spin42-reporting",
       "name"        => "google analytics users by types",
-      "data"        => users_by_types.to_json
+      "data"        => users_by_types.to_json,
+      "created_at"  => Time.now.utc
     }
   end
 
   def fetch_site_speeds_data(google_analytics_view_id, start_date_time, end_date_time)
-    site_speeds         = GoogleAnalyticsService.client.page_visits(
-                            google_analytics_view_id,
-                            start_date_time, end_date_time,
-                            "", "ga:avgServerResponseTime, ga:avgPageDownloadTime, ga:avgPageLoadTime")
+    site_speeds = GoogleAnalyticsService.client.page_visits(
+                    google_analytics_view_id,
+                    start_date_time, end_date_time,
+                    "", "ga:avgServerResponseTime, ga:avgPageDownloadTime, ga:avgPageLoadTime")
     {
       "source_name" => "spin42-reporting",
       "name"        => "google analytics site speeds",
-      "data"        => site_speeds.to_json
+      "data"        => site_speeds.to_json,
+      "created_at"  => Time.now.utc
     }
   end
 end
