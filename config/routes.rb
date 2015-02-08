@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
 
   namespace :eventually_tracker_api, defaults: { format: :json } do
-    resources :events,                        only: :create
+    resources :events, only: :create
   end
 end
