@@ -12,6 +12,7 @@ set :linked_dirs,         %w{ bin log tmp/pids config/credentials }
 set :keep_releases,       5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_environment,-> { fetch(:stage) }
+set :projectors,          %w{ twitter google_analytics new_relic_application new_relic_server event_bus event_store }
 
 namespace :deploy do
 
@@ -25,7 +26,9 @@ namespace :deploy do
 
   task :restart_projectors do
     on roles(:app), in: :sequence, wait: 5 do
-      # execute "supervisorctl restart spin42-reporting-projectors:*"
+      fetch(:projectors).each do | projector |
+        execute "supervisorctl restart spin42-reporting-#{projector}_projectors"
+      end
     end
   end
 
@@ -37,7 +40,9 @@ namespace :deploy do
 
   task :start_projectors do
     on roles(:app) do
-      execute "supervisorctl start spin42-reporting-projectors:*"
+      fetch(:projectors).each do | projector |
+        execute "supervisorctl start spin42-reporting-#{projector}_projectors"
+      end
     end
   end
 
@@ -47,9 +52,11 @@ namespace :deploy do
     end
   end
 
-  task :start_projectors do
+  task :stop_projectors do
     on roles(:app) do
-      execute "supervisorctl stop spin42-reporting-projectors:*"
+      fetch(:projectors).each do | projector |
+        execute "supervisorctl stop spin42-reporting-#{projector}_projectors"
+      end
     end
   end
 

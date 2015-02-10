@@ -14,4 +14,12 @@ namespace :data_workers do
   task :twitter => :environment do
     TwitterDataWorker.perform_async
   end
+
+  task :event_bus => :environment do
+    EventBusDataWorker.perform_async
+  end
+
+  task :event_store => :environment do
+    EventStoreDataWorker.perform_async
+  end
 end

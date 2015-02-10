@@ -33,5 +33,13 @@ namespace :projectors do
   task :new_relic_server => :environment do
     NewRelicServerProjector.new.start
   end
+
+  task :event_bus => :environment do
+    EventBusProjector.new.start
+  end
+
+  task :event_store => :environment do
+    EventStoreProjector.new.start
+  end
 end
 
