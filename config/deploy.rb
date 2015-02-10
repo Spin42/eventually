@@ -25,7 +25,7 @@ namespace :deploy do
 
   task :restart_projectors do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "supervisorctl restart spin42-reporting-projectors:*"
+      # execute "supervisorctl restart spin42-reporting-projectors:*"
     end
   end
 

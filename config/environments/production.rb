@@ -93,6 +93,14 @@ Rails.application.configure do
     new_relic_server: {
       event_bus_queue:  "new_relic_server_event_bus_queue",
       class_name:       "new_relic_server_projector"
+    },
+    event_store: {
+      event_bus_queue:  "event_store_event_bus_queue",
+      class_name:       "event_store_projector"
+    },
+    event_bus: {
+      event_bus_queue:  "event_bus_event_bus_queue",
+      class_name:       "event_bus_projector"
     }
   }
 

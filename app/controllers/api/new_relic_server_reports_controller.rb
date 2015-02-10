@@ -1,11 +1,6 @@
 class Api::NewRelicServerReportsController < ApiController
   def index
-    @new_relic_server_reports = NewRelicServerReport.select("DISTINCT ON (new_relic_id) *").order("new_relic_id, created_at DESC")
-  end
-
-  def create
-    NewRelicServerDataWorker.perform_async
-    render nothing: true, status: :created
+    @new_relic_server_reports = NewRelicServerReport.all
   end
 
 end

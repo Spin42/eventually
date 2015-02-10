@@ -6,10 +6,10 @@
 #  twitter_id  :string
 #  screen_name :string
 #  name        :string
-#  followers   :integer
-#  friends     :integer
-#  statuses    :integer
-#  favourites  :integer
+#  followers   :integer          default("0")
+#  friends     :integer          default("0")
+#  statuses    :integer          default("0")
+#  favourites  :integer          default("0")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
