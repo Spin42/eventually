@@ -27,7 +27,7 @@ namespace :deploy do
   task :restart_projectors do
     on roles(:app), in: :sequence, wait: 5 do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl restart spin42-reporting-#{projector}_projectors"
+        execute "supervisorctl restart spin42-reporting-#{projector}_projector"
       end
     end
   end
@@ -41,7 +41,7 @@ namespace :deploy do
   task :start_projectors do
     on roles(:app) do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl start spin42-reporting-#{projector}_projectors"
+        execute "supervisorctl start spin42-reporting-#{projector}_projector"
       end
     end
   end
@@ -55,7 +55,7 @@ namespace :deploy do
   task :stop_projectors do
     on roles(:app) do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl stop spin42-reporting-#{projector}_projectors"
+        execute "supervisorctl stop spin42-reporting-#{projector}_projector"
       end
     end
   end
