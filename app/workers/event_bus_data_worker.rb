@@ -7,7 +7,7 @@ class EventBusDataWorker < DataWorker
     Rails.application.config.projectors.each do | projector_name, projector_data |
       queue       = projector_data[:event_bus_queue]
       event_hash  = {
-        "source_name" => "spin42-reporting",
+        "source_name" => "eventually",
         "name"        => "event bus statistics",
         "data"        => {
           "queue" => queue,

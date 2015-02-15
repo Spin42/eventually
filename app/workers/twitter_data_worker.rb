@@ -7,7 +7,7 @@ class TwitterDataWorker < DataWorker
     TWITTER_USERS.each do |user_id_or_screen_name|
       user_data  = TwitterService.client.user(user_id_or_screen_name)
       event_hash = {
-        "source_name" => "spin42-reporting",
+        "source_name" => "eventually",
         "name"        => "twitter user data",
         "data"        => user_data.attrs,
         "created_at"  => Time.now.utc

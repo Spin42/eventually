@@ -1,12 +1,12 @@
 # config valid only for Capistrano 3.1
 lock "3.1.0"
 
-set :application,         "spin42-reporting"
-set :repo_url,            "git@bitbucket.org:spin42/spin42-reporting.git"
+set :application,         "eventually"
+set :repo_url,            "git@bitbucket.org:spin42/eventually.git"
 set :branch,              ENV["branch"] || "master"
-set :deploy_to,           "/home/spin42-reporting"
+set :deploy_to,           "/home/eventually"
 set :rvm_type,            :user
-set :rvm_ruby_version,    "ruby-2.2.0@spin42-reporting"
+set :rvm_ruby_version,    "ruby-2.2.0@eventually"
 set :linked_files,        %w{ config/database.yml config/secrets.yml }
 set :linked_dirs,         %w{ bin log tmp/pids config/credentials }
 set :keep_releases,       5
@@ -27,7 +27,7 @@ namespace :deploy do
   task :restart_projectors do
     on roles(:app), in: :sequence, wait: 5 do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl restart spin42-reporting-#{projector}_projector"
+        execute "supervisorctl restart eventually-#{projector}_projector"
       end
     end
   end
@@ -41,7 +41,7 @@ namespace :deploy do
   task :start_projectors do
     on roles(:app) do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl start spin42-reporting-#{projector}_projector"
+        execute "supervisorctl start eventually-#{projector}_projector"
       end
     end
   end
@@ -55,7 +55,7 @@ namespace :deploy do
   task :stop_projectors do
     on roles(:app) do
       fetch(:projectors).each do | projector |
-        execute "supervisorctl stop spin42-reporting-#{projector}_projector"
+        execute "supervisorctl stop eventually-#{projector}_projector"
       end
     end
   end

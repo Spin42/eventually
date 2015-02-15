@@ -1,4 +1,4 @@
 development:
   adapter: postgresql
-  database: spin42-reporting_development
+  database: eventually_development
   host: localhost

@@ -9,7 +9,7 @@ class EventStoreDataWorker < DataWorker
     result            = connection.execute("SELECT SUM(n_live_tup) FROM pg_stat_all_tables WHERE relname LIKE '%_reports'")
     reports           = result[0]["sum"]
     event_hash        = {
-      "source_name" => "spin42-reporting",
+      "source_name" => "eventually",
       "name"        => "event store statistics",
       "data"        => {
         "events inserted"                     => table_statistics["n_tup_ins"],
