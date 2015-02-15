@@ -70,4 +70,10 @@ namespace :deploy do
   before  "deploy:restart", "deploy:update_supervisor_config"
   after   "publishing",     "restart"
   after   "restart",        "restart_projectors"
+  after   "restart",        "sidekiq:restart"
+  after   "stop",           "sidekiq:stop"
+  after   "stop",           "stop_projectors"
+  after   "start",          "sidekiq:start"
+  after   "start",          "start_projectors"
+
 end
