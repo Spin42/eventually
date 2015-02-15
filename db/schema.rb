@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210212901) do
+ActiveRecord::Schema.define(version: 20150215152134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20150210212901) do
   add_index "events", ["name"], name: "index_events_on_name", using: :btree
   add_index "events", ["source_name"], name: "index_events_on_source_name", using: :btree
 
-  create_table "google_analytics_reports", force: :cascade do |t|
+  create_table "google_analytics_daily_reports", force: :cascade do |t|
     t.string   "google_analytics_view_id"
     t.integer  "total_visits"
     t.integer  "direct_visits"
@@ -61,9 +61,10 @@ ActiveRecord::Schema.define(version: 20150210212901) do
     t.decimal  "average_page_load_time",       precision: 15, scale: 2
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
+    t.datetime "date_time"
   end
 
-  add_index "google_analytics_reports", ["google_analytics_view_id"], name: "index_google_analytics_reports_on_google_analytics_view_id", using: :btree
+  add_index "google_analytics_daily_reports", ["google_analytics_view_id"], name: "index_g_a_d_r_on_google_analytics_view_id", using: :btree
 
   create_table "new_relic_application_reports", force: :cascade do |t|
     t.string   "name"

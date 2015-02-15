@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: google_analytics_reports
+# Table name: google_analytics_daily_reports
 #
 #  id                           :integer          not null, primary key
 #  google_analytics_view_id     :string
@@ -19,7 +19,7 @@
 #  updated_at                   :datetime         not null
 #
 
-class GoogleAnalyticsReport < ActiveRecord::Base
+class GoogleAnalyticsDailyReport < ActiveRecord::Base
 
   def update_visits_by_channels(visits_by_channels)
     self.total_visits           = visits_by_channels["totalsForAllResults"]["ga:visits"].try(:to_i)

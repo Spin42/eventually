@@ -22,7 +22,7 @@ class GoogleAnalyticsDataWorker < DataWorker
                             "ga:channelGrouping", "ga:visits")
     {
       "source_name" => "spin42-reporting",
-      "name"        => "google analytics visits by channels",
+      "name"        => "google analytics visits by channels for day",
       "data"        => visits_by_channels.to_json,
       "created_at"  => Time.now.utc
     }
@@ -35,7 +35,7 @@ class GoogleAnalyticsDataWorker < DataWorker
                         "ga:userType", "ga:users")
     {
       "source_name" => "spin42-reporting",
-      "name"        => "google analytics users by types",
+      "name"        => "google analytics users by types for day",
       "data"        => users_by_types.to_json,
       "created_at"  => Time.now.utc
     }
@@ -48,7 +48,7 @@ class GoogleAnalyticsDataWorker < DataWorker
                     "", "ga:avgServerResponseTime, ga:avgPageDownloadTime, ga:avgPageLoadTime")
     {
       "source_name" => "spin42-reporting",
-      "name"        => "google analytics site speeds",
+      "name"        => "google analytics site speeds for day",
       "data"        => site_speeds.to_json,
       "created_at"  => Time.now.utc
     }

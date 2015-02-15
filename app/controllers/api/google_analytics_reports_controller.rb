@@ -1,6 +1,6 @@
-class Api::GoogleAnalyticsReportsController < ApiController
+class Api::GoogleAnalyticsDailyReportsController < ApiController
   def index
-    @google_analytics_reports = GoogleAnalyticsReport.all
+    @google_analytics_daily_reports = GoogleAnalyticsDailyReport.all
   end
 
 end
