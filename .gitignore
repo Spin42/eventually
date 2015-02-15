@@ -16,3 +16,4 @@
 !/log/.keep
 /tmp
 config/credentials
+.DS_Store
