@@ -18,7 +18,7 @@ class TwitterProjector < Projector
     user_data       = event.data
     twitter_report  = TwitterDailyReport.find_or_initialize_by({
       twitter_id: user_data["id"],
-      created_at: event.created_at.beginning_of_day
+      date_time: event.created_at.beginning_of_day
     })
     twitter_report.update_user_data(user_data)
     twitter_report.save!

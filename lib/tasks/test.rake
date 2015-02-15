@@ -1,6 +1,6 @@
 namespace :test do
   task :plop => :environment do
-    EventBusDataWorker.perform_async
+    GoogleAnalyticsDataWorker.perform_async
   end
 end
 
