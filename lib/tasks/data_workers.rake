@@ -22,4 +22,8 @@ namespace :data_workers do
   task :event_store => :environment do
     EventStoreDataWorker.perform_async
   end
+
+  task :sidekiq => :environment do
+    SidekiqDataWorker.perform_async
+  end
 end

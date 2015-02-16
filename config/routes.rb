@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :google_analytics_daily_reports,  only: [ :index ]
     resources :event_bus_reports,               only: [ :index ]
     resources :event_store_reports,             only: [ :index ]
+    resources :sidekiq_reports,                 only: [ :index ]
   end
 
   namespace :eventually_tracker_api, defaults: { format: :json } do

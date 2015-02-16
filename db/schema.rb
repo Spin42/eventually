@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150215153457) do
+ActiveRecord::Schema.define(version: 20150216153213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,20 @@ ActiveRecord::Schema.define(version: 20150215153457) do
   end
 
   add_index "new_relic_server_reports", ["new_relic_id"], name: "index_new_relic_server_reports_on_new_relic_id", using: :btree
+
+  create_table "sidekiq_reports", force: :cascade do |t|
+    t.integer  "processed"
+    t.integer  "failed"
+    t.integer  "scheduled_size"
+    t.integer  "retry_size"
+    t.integer  "dead_size"
+    t.integer  "processes_size"
+    t.integer  "default_queue_latency"
+    t.integer  "workers_size"
+    t.integer  "enqueued"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "twitter_daily_reports", force: :cascade do |t|
     t.string   "twitter_id"

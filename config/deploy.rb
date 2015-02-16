@@ -12,7 +12,7 @@ set :linked_dirs,         %w{ bin log tmp/pids config/credentials }
 set :keep_releases,       5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_environment,-> { fetch(:stage) }
-set :projectors,          %w{ twitter google_analytics new_relic_application new_relic_server event_bus event_store }
+set :projectors,          %w{ twitter google_analytics new_relic_application new_relic_server event_bus event_store sidekiq }
 
 namespace :deploy do
 

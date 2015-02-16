@@ -101,6 +101,10 @@ Rails.application.configure do
     event_bus: {
       event_bus_queue:  "event_bus_event_bus_queue",
       class_name:       "event_bus_projector"
+    },
+    sidekiq: {
+      event_bus_queue:  "sidekiq_event_bus_queue",
+      class_name:       "sidekiq_projector"
     }
   }
 

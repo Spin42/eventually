@@ -41,5 +41,9 @@ namespace :projectors do
   task :event_store => :environment do
     EventStoreProjector.new.start
   end
+
+  task :sidekiq => :environment do
+    SidekiqProjector.new.start
+  end
 end
 
