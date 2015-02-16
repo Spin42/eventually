@@ -17,6 +17,7 @@
 #  average_page_load_time       :decimal(15, 2)
 #  created_at                   :datetime         not null
 #  updated_at                   :datetime         not null
+#  date_time                    :datetime
 #
 
 class GoogleAnalyticsDailyReport < ActiveRecord::Base
