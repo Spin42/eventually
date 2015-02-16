@@ -10,6 +10,6 @@ when "production"
   every 1.minutes do
     command "cd /home/eventually/current && RAILS_ENV=production eventually_rake data_workers:event_bus"
     command "cd /home/eventually/current && RAILS_ENV=production eventually_rake data_workers:event_store"
-
+    command "cd /home/eventually/current && RAILS_ENV=production eventually_rake data_workers:sidekiq"
   end
 end
