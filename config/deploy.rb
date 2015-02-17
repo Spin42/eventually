@@ -8,7 +8,7 @@ set :deploy_to,           "/home/eventually"
 set :rvm_type,            :user
 set :rvm_ruby_version,    "ruby-2.2.0@eventually"
 set :linked_files,        %w{ config/database.yml config/secrets.yml }
-set :linked_dirs,         %w{ bin log tmp/pids config/credentials }
+set :linked_dirs,         %w{ log tmp/pids config/credentials }
 set :keep_releases,       5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 set :whenever_environment,-> { fetch(:stage) }
