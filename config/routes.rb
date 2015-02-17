@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
   namespace :api, defaults: { format: :json } do
+    resources :events,                          only: [ :index ]
     resources :new_relic_server_reports,        only: [ :index ]
     resources :new_relic_application_reports,   only: [ :index ]
     resources :twitter_reports,                 only: [ :index ]
