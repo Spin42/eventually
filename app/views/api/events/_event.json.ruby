@@ -4,5 +4,5 @@
   name:       event.name,
   data:       event.data,
   createdAt:  event.created_at,
-  updatedAt:  event.update_at
+  updatedAt:  event.updated_at
 }
