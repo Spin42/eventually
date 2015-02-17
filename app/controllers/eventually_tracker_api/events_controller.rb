@@ -12,4 +12,5 @@ class EventuallyTrackerApi::EventsController < EventuallyTrackerApiController
     event_handler.handle([event_hash])
     render nothing: true, status: :ok
   end
+
 end

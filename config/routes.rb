@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :event_bus_reports,               only: [ :index ]
     resources :event_store_reports,             only: [ :index ]
     resources :sidekiq_reports,                 only: [ :index ]
+    resources :applications,                    only: [ :index, :show, :create, :update ]
   end
 
   namespace :eventually_tracker_api, defaults: { format: :json } do

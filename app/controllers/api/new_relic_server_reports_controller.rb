@@ -7,4 +7,5 @@ class Api::NewRelicServerReportsController < ApiController
       @new_relic_server_reports = NewRelicServerReport.all
     end
   end
+
 end
