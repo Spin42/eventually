@@ -1,3 +1,0 @@
-== README
-
-* Need to create a wrapper `rvm wrapper ruby-2.1.5@eventually eventually rails`
