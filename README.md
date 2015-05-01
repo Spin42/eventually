@@ -25,7 +25,7 @@ Create an application (that will be able to push events via the API):
 
 ```
 $ rails c
-	> Application.create({name: "My Application", api_key: "myApiKey", api_secret: "myApiSecret"})
+> Application.create({name: "My Application", api_key: "myApiKey", api_secret: "myApiSecret"})
 ```
 
 Configure Eventually Tracker to use the previous keys: 
