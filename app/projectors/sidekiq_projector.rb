@@ -1,4 +1,4 @@
-class SidekiqProjector < Projector
+class SidekiqProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "sidekiq stats" do | event |

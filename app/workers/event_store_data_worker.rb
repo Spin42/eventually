@@ -1,4 +1,4 @@
-class EventStoreDataWorker < DataWorker
+class EventStoreDataWorker < EventuallyToolkit::DataWorker
 
   def fetch_data
     event_hashes      = []

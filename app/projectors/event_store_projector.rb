@@ -1,4 +1,4 @@
-class EventStoreProjector < Projector
+class EventStoreProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "event store statistics" do | event |

@@ -1,4 +1,4 @@
-class EventBusDataWorker < DataWorker
+class EventBusDataWorker < EventuallyToolkit::DataWorker
 
   def fetch_data
     event_hashes  = []

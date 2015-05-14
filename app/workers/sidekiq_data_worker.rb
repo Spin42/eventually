@@ -1,4 +1,4 @@
-class SidekiqDataWorker < DataWorker
+class SidekiqDataWorker < EventuallyToolkit::DataWorker
 
   def fetch_data
     sidekiq_stats = Sidekiq::Stats.new

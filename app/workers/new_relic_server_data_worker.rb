@@ -1,4 +1,4 @@
-class NewRelicServerDataWorker < DataWorker
+class NewRelicServerDataWorker < EventuallyToolkit::DataWorker
 
   def fetch_data
     new_relic_servers_data  = NewRelicService.client.servers

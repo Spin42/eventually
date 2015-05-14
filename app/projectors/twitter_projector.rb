@@ -1,4 +1,4 @@
-class TwitterProjector < Projector
+class TwitterProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "twitter user data" do | event |

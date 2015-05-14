@@ -1,4 +1,4 @@
-class GoogleAnalyticsProjector < Projector
+class GoogleAnalyticsProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "google analytics visits by channels for day" do | event |
