@@ -1,3 +1,12 @@
+PATH
+  remote: ../eventually_toolkit
+  specs:
+    eventually_toolkit (0.0.1)
+      awesome_print
+      logging
+      redis
+      sidekiq
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,7 +109,7 @@ GEM
       multi_json (~> 1.10)
       retriable (~> 1.4)
       signet (~> 0.6)
-    haml (4.0.6)
+    haml (4.0.5)
       tilt
     hike (1.2.3)
     hitimes (1.2.2)
@@ -113,6 +122,10 @@ GEM
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    little-plugger (1.1.3)
+    logging (2.0.0)
+      little-plugger (~> 1.1)
+      multi_json (~> 1.10)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -247,10 +260,11 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rvm
   capistrano-sidekiq
+  eventually_toolkit!
   google-api-client (= 0.8.2)
-  haml (~> 4.0.5)
+  haml (= 4.0.5)
   newrelic_rpm (= 3.9.9.275)
-  pg (~> 0.17.1)
+  pg (= 0.17.1)
   rails (= 4.2.0)
   redis (= 3.2.0)
   rest-client (= 1.7.2)
