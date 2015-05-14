@@ -1,4 +1,4 @@
-class EventBusProjector < Projector
+class EventBusProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "event bus statistics" do | event |

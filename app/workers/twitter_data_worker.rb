@@ -1,4 +1,4 @@
-class TwitterDataWorker < DataWorker
+class TwitterDataWorker < EventuallyToolkit::DataWorker
 
   TWITTER_USERS = [ "Spin_42" ]
 

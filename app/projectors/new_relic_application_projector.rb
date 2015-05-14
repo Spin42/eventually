@@ -1,4 +1,4 @@
-class NewRelicApplicationProjector < Projector
+class NewRelicApplicationProjector < EventuallyToolkit::Projector
 
   def register_handlers
     on "new relic applications data" do | event |

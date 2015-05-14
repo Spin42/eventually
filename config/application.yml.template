@@ -1,0 +1,17 @@
+google_analytics_application_name:    "google_analytics_application_name"
+google_analytics_application_version: "google_analytics_application_version"
+google_analytics_key_file_path:       "google_analytics_key_file_path"
+google_analytics_issuer:              "google_analytics_issuer"
+
+new_relic_api_key:                    "new_relic_api_key"
+
+twitter_consumer_key:                 "twitter_consumer_key"
+twitter_consumer_secret:              "twitter_consumer_secret"
+twitter_access_token:                 "twitter_access_token"
+twitter_access_token_secret:          "twitter_access_token_secret"
+
+development:
+  redis_url:                          "redis_url"
+
+production:
+  redis_url:                          "redis_url"

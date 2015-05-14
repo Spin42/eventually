@@ -1,4 +1,4 @@
-class GoogleAnalyticsDataWorker < DataWorker
+class GoogleAnalyticsDataWorker < EventuallyToolkit::DataWorker
   include Sidekiq::Worker
 
   GOOGLE_ANALYTICS_VIEW_IDS = [ "ga:81963782", "ga:90616019" ]

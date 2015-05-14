@@ -8,7 +8,7 @@ class EventuallyTrackerApi::EventsController < EventuallyTrackerApiController
       "data"        => params["event"],
       "created_at"  => params["event"]["date_time"]
     }
-    event_handler = EventHandler.new
+    event_handler = EventuallyToolkit::EventHandler.new
     event_handler.handle([event_hash])
     render nothing: true, status: :ok
   end
