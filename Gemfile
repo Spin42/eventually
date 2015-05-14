@@ -11,7 +11,7 @@ gem "twitter",              "5.13.0",   require: false
 gem "whenever",             "0.9.4",    require: false
 gem "sinatra",              "1.4.5",    require: false
 gem "redis",                "3.2.0",    require: false
-gem "eventually_toolkit",   path: "/Users/loo/Development/Spin42/eventually_toolkit"
+gem "eventually_toolkit",   git: "https://github.com/Spin42/eventually_toolkit.git"
 gem "figaro"
 
 group :development, :test do

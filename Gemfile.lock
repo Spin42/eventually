@@ -1,5 +1,6 @@
-PATH
-  remote: ../eventually_toolkit
+GIT
+  remote: https://github.com/Spin42/eventually_toolkit.git
+  revision: bccb75b2d8aa60bce7cb801b3ba78054b1efab37
   specs:
     eventually_toolkit (0.0.1)
       awesome_print
