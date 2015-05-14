@@ -76,6 +76,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.redis_url = "redis://db1.spin42.intra:6379/1"
 end

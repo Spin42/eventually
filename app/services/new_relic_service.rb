@@ -8,7 +8,7 @@ class NewRelicService
   end
 
   def self.client
-    @new_relic_service ||= NewRelicService.new("a27b734ff9d4be65a23624126a729b9c74f7f8aca3fbd00")
+    @new_relic_service ||= NewRelicService.new(Rails.application.config.new_relic[:api_key])
   end
 
   def servers

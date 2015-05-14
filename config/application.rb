@@ -23,5 +23,25 @@ module Eventually
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.redis_url        = ENV["redis_url"]
+
+    config.google_analytics = {
+      application_name:     ENV["google_analytics_application_name"],
+      application_version:  ENV["google_analytics_application_version"],
+      key_file_path:        ENV["google_analytics_key_file_path"],
+      issuer:               ENV["google_analytics_issuer"]
+    }
+
+    config.new_relic = {
+      api_key:              ENV["new_relic_api_key"]
+    }
+
+    config.twitter = {
+      consumer_key:        ENV["twitter_consumer_key"],
+      consumer_secret:     ENV["twitter_consumer_secret"],
+      access_token:        ENV["twitter_access_token"],
+      access_token_secret: ENV["twitter_access_token_secret"]
+    }
   end
 end

@@ -4,8 +4,9 @@ class EventBusDataWorker < EventuallyToolkit::DataWorker
     event_hashes  = []
     redis         = Redis.new(:url => Rails.application.config.redis_url)
 
-    Rails.application.config.projectors.each do | projector_name, projector_data |
-      queue       = projector_data[:event_bus_queue]
+    EventuallyToolkit.config.projectors.each do | projector_name |
+      klass       = "#{projector_name}_projector".camelize.constantize
+      queue       = klass.event_bus_queue
       event_hash  = {
         "source_name" => "eventually",
         "name"        => "event bus statistics",

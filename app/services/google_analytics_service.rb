@@ -4,16 +4,16 @@ class GoogleAnalyticsService
 
   def initialize
     @google_api_client               = Google::APIClient.new(
-                                        application_name:    "Spin42-Reporting",
-                                        application_version: "1.0.0")
-    key_file                         = File.join(Rails.root, "config", "credentials", "google_apis", "BiPl-47690648982c.p12")
-    key                              = Google::APIClient::KeyUtils.load_from_pkcs12(key_file, "notasecret")
+                                        application_name:    Rails.application.config.google_analytics[:application_name],
+                                        application_version: Rails.application.config.google_analytics[:application_version])
+    key_file_path                    = Rails.application.config.google_analytics[:key_file_path]
+    signing_key                      = Google::APIClient::KeyUtils.load_from_pkcs12(key_file_path, "notasecret")
     @google_api_client.authorization = Signet::OAuth2::Client.new(
       token_credential_uri: "https://accounts.google.com/o/oauth2/token",
       audience:             "https://accounts.google.com/o/oauth2/token",
       scope:                "https://www.googleapis.com/auth/analytics.readonly",
-      issuer:               "498811986685-0h4b0f30lbdv01vjf3nmvvhiqjnj57m0@developer.gserviceaccount.com",
-      signing_key:          key)
+      issuer:               Rails.application.config.google_analytics[:issuer],
+      signing_key:          signing_key)
 
     @google_api_client.authorization.fetch_access_token!
   end
